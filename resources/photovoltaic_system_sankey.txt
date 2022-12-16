@@ -1,0 +1,13 @@
+// Enter Flows between Nodes, like this:
+//         Source [AMOUNT] Target
+
+Incident Solar Power [10] Reflection Losses
+Incident Solar Power [10] Thermal Losses
+Incident Solar Power [980] Captured Electrical Power
+
+Captured Electrical Power [30] Transmission Losses
+Captured Electrical Power [30] Mismatch Losses
+Captured Electrical Power [920] Transmitted Electrical Power
+
+// You can set a Node's color, like this:
+:Incident Solar Power  #708090

@@ -1,0 +1,86 @@
+\chapter{Introduction}
+
+In order to reach net zero emissions targets set by the \ac{UN} at the
+2015 Paris Agreement \cite{UN_Paris_agreement} before 2050, the \ac{IEA}
+estimates that nearly 630 \ac{GW} \cite{IEA_roadmap} of \ac{PV} energy
+generation capacity need to be added annually by 2030. As of 2022, we observed
+that at least 175 GW were installed in 2021 \cite{IEA_trends}
+\cite{IEA_snapshot}, a 22\% year over year growth. With large policy and
+geopolitical tailwinds behind major economies like the United States and Europe,
+solar is expected to be one of the, if not the major driver of new energy
+generation within the next two decades.
+
+However, in order to achieve this target generation capacity in a sustainable
+way, engineers and \ac{PV} designers need to maximize the electrical
+efficiency of the overall power system, as opposed to just improving the solar
+cell efficiency. According to the \ac{EIA} \cite{EIA_capacity}, the capacity
+factor of \ac{PV}s as an energy source in the United States reached a
+monthly maximum of 33.4\% in June of 2022; \textit{capacity factor} is defined
+by the \ac{EIA} as a measure of the generated output by the electric generator
+versus the maximum possible output. It is clear that system inefficiencies in
+\ac{PV} generation provide large constraints, and optimistically, equally
+large opportunities, in allowing us to increase our pace towards reaching net
+zero carbon emissions by 2050.
+
+This thesis takes a holistic evaluation of the \ac{PV} power generation
+system in a unique use case that necessitates maximizing the capacity factor:
+solar powered vehicles. We evaluate the modeling, creation, and optimization of
+a solar powered vehicle for the University of Texas at Austin's Longhorn Racing
+Solar team, and attempt to identify and address inefficiencies and bottlenecks
+whose improvements will help the larger \ac{PV} industry as a whole.
+
+In particular, this thesis will focus on three important and active areas of
+development within the PV field: solar array modeling and prediction,
+\todo{The second area of development may be more generalized then this.}
+\hl{solar cell binning processes and heuristics},
+and maximum power point tracking algorithms.
+In each of these areas, we look at the state of the art techniques, propose novel
+ideas to improve our understanding of the system and its inefficiencies, and see
+if we can translate it lateral applications like rooftop solar or industrial PV.
+Note that in this thesis we refer to photovoltaics and solar without distinction.
+
+In the first major section, \textbf{Modeling Photovoltaics}, this thesis
+discusses how can solar cells can be modeled at various abstraction layers, from
+idealized cells at standard conditions using the 3-parameter model to
+non-idealized cells that incorporate parasitic resistances using the 7-parameter
+model. These solar cell models are then evaluated against a dataset of several
+hundred solar cell \ac{I-V} curves generated from our custom testing setup to
+see how well the model fits real cells at different conditions. We build upon
+these models to form larger units of \ac{PV}s, such as solar modules and solar
+arrays, which may consist of strings of cells in series with bypass diodes
+across them, among other configurations. Some important topics that are explored
+using these multi-cell models include \ac{PV} mismatch and bypass activation.
+Insights from these topics lead to heuristics that are proposed in the next
+section, \textbf{Optimizing Photovoltaics}.
+
+The second major section, \textbf{Optimizing Photovoltaics}, takes the
+aforementioned models and dataset created to propose a process to bin, match,
+and combine solar cells and modules, with the end goal of maximizing the
+performance of the solar array that will be attached to the solar vehicle. In
+this section, we propose design criteria, heuristics, and methodologies to
+generate designs for the solar vehicle that fit the unique constraints of the
+application, which center around the dynamism of the system as it moves in
+transit across the real world.
+
+In the third and final major section, \textbf{Optimizing Photovoltaic
+Infrastructure}, this thesis investigates the operation of the \ac{PV}
+system in the context of the solar vehicle. We observe the energy conversion
+process from incident light on the solar array to electricity captured by the
+\ac{BPS} and present a \ac{PV} system simulator and a suite of maximum power
+point tracking (MPPT) algorithms to minimize energy losses from the
+aforementioned conversion process. We demonstrate custom hardware developed by the
+Longhorn Racing Solar team and evaluate in real world settings a select set of
+MPPT algorithms. We compare these results with existing research and our digital
+twin model of the solar vehicle, and finally discuss conclusions from the three
+sections that can be translatable to the wider \ac{PV} industry.
+
+Along with these three major sections, we also provide a large set of appendices
+corresponding to the development of the main body of work in this thesis. Among
+them include manufacturing procedures for testing, assembling, and laminating
+solar cells into solar modules, schematics and accompanying documentation for
+hardware that was used for characterizing and validating parts of the thesis,
+software diagrams with relevant open source software repositories developed by
+our team, and extra insights into the design of the Longhorn Racing Solar's
+phovoltaic array that are not directly applicable to the major sections, such as
+thermal models performed of the vehicle topshell that influenced our simulation
+models, among others.

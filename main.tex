@@ -1,0 +1,36 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{soul}
+% \usepackage[colorlinks]{hyperref}
+\usepackage{acronym}
+\usepackage[backend=biber]{biblatex}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\graphicspath{ {images/} }
+\addbibresource{./references.bib}
+
+
+\begin{document}
+
+\title {
+    {Evaluation and Improvement of Photovoltaic Power Systems}\\
+    {\large The University of Texas at Austin}\\
+    {\includegraphics[width=\textwidth]{lonestar_cover.jpg}}
+}
+\author{Matthew Junkit Yu}
+\date{15 December 2022}
+\maketitle
+
+\tableofcontents
+
+\input{chapters/introduction}
+\input{chapters/chapter_1.tex}
+\input{chapters/chapter_2.tex}
+\input{chapters/chapter_3.tex}
+\input{chapters/conclusion.tex}
+\input{chapters/appendix_a.tex}
+\printbibliography
+\listoftodos[TODOS]
+\end{document}
