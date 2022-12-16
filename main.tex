@@ -2,10 +2,15 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{xcolor}
+% \pagecolor[rgb]{0,0,0} %black
+% \color[rgb]{1,1,1} %grey
 \usepackage{soul}
 % \usepackage[colorlinks]{hyperref}
 \usepackage{acronym}
 \usepackage[backend=biber]{biblatex}
+\usepackage{amsmath}
+
+\setlength {\marginparwidth}{2cm}
 \usepackage[colorinlistoftodos]{todonotes}
 
 \graphicspath{ {images/} }
@@ -20,10 +25,12 @@
     {\includegraphics[width=\textwidth]{lonestar_cover.jpg}}
 }
 \author{Matthew Junkit Yu}
-\date{15 December 2022}
+\date{16 December 2022}
 \maketitle
 
 \tableofcontents
+\listoffigures
+\listoftables
 
 \input{chapters/introduction}
 \input{chapters/chapter_1.tex}
@@ -31,6 +38,7 @@
 \input{chapters/chapter_3.tex}
 \input{chapters/conclusion.tex}
 \input{chapters/appendix_a.tex}
+\input{chapters/appendix_b.tex}
 \printbibliography
 \listoftodos[TODOS]
 \end{document}
