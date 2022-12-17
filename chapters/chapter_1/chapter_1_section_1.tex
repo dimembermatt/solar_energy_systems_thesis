@@ -213,7 +213,7 @@ and~\ref{fig:cell_irradiance_dependence}.
     \label{fig:cell_temperature_dependence}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{cell_irradiance_dependence.png}
     \caption{Solar Cell Irradiance Dependence}
@@ -346,7 +346,7 @@ dependence.
 \begin{equation}
     \begin{split}
         V_{OC}(G, T_C) &= V_{OC,ref}[1 - \beta (T_{C,ref} - T_C)] \\
-        & + \frac{k_B(T_{C,ref} + T_C/\gamma)}{q}\ln(\frac{G}{G_{ref}})
+        & + \frac{nk_B(T_{C,ref} + T_C/\gamma)}{q}\ln(\frac{G}{G_{ref}})
     \end{split}
     \equnit{\si{\volt}}
     \label{eq:cell_open_circuit_voltage_3}
@@ -374,19 +374,37 @@ cell model. Its efficacy will be explored further at the end of
 Chapter~\ref{chapter:modeling_pvs} in
 Section~\ref{sec:evaluation_of_solar_cell_models}.
 
+
 \subsection{Model Summary}\label{subsec:three_param_model_summary}
 
 To conclude this section, we will review the components that make up the three
 parameter cell model, propose three items of further exploration, and propose a
 complete model function that incorporates in the topics discussed.
 
-\dots
+Firstly, the three parameter cell model is composed of a constant current source
+and a power consuming diode, representing photogeneration and recombination
+effects of the solar cell, respectively. These two components form three
+parameters that is the namesake of this section, namely the photocurrent, dark
+saturation current, and ideality factor.
 
-The final model function is presented in
+Secondly, we explore the construction and interpretation of these three
+components, and along the way, examine three areas that deviate from the
+existing models that we would like to investigate:
+
+\begin{itemize}
+    \item an algebraic derivation of the dark saturation current \ac{I0},
+    \item an alternative interpretation of the short circuit current \ac{ISC} as
+    a function of temperature,
+    \item and a new curve fitting coefficient, $\gamma$, to improve open circuit
+    voltage \ac{VOC} modeling at low lighting conditions.
+\end{itemize}
+
+Finally, we present the complete model function and its derivation, in
 Equation~\ref{eq:cell_output_current_2}.
 
 % TODO: This is equation is a freak of nature... Probably stop at second to last
 % step and move most of the derivation to an appendix.
+\todo{Reformat this equation}
 \begin{equation}
     \begin{split}
         I(V, G, T_C) &= I_{PV}(G, T_C) - I_D(V, G, T_C) \\
@@ -398,12 +416,11 @@ Equation~\ref{eq:cell_output_current_2}.
         & = I_{SC}(G, T_C)[1 - \frac{\exp(\frac{qV}{n k_B T_C}) - 1}{\exp(\frac{qV_{OC}(G, T_C)}{n k_B T_C}) - 1}] \\
         & = I_{SC,ref}\frac{G}{G_{ref}}[1 - \alpha[T_{C,ref} - T_C]][1 - \frac{\exp(\frac{qV}{n k_B T_C}) - 1}{\exp(\frac{qV_{OC}(G, T_C)}{n k_B T_C}) - 1}] \\
         & = I_{SC,ref}\frac{G}{G_{ref}}[1 - \alpha[T_{C,ref} - T_C]] \\
-        & * [1 - \frac{\exp(\frac{qV}{n k_B T_C}) - 1}{\exp(\frac{q[V_{OC,ref}[1 - \beta[T_{C,ref} - T_C]] + \frac{k_B(T_{C,ref} + T_C/\gamma)}{q}\ln(\frac{G}{G_{ref}})](G, T_C)}{n k_B T_C}) - 1}] \\
+        & * [1 + \frac{1 - \exp(\frac{qV}{n k_B T_C})}{1 - \exp(\frac{q[V_{OC,ref}[1 - \beta[T_{C,ref} - T_C]] + \frac{nk_B(T_{C,ref} + T_C/\gamma)}{q}\ln(\frac{G}{G_{ref}})]}{n k_B T_C})}] \\
     \end{split}
     \equnit{\si{\ampere}}
     \label{eq:cell_output_current_2}
 \end{equation}
-\todo{Reformat this so I don't kill myself :)}
 
 \todo[inline]{See https://www.desmos.com/calculator/yp0rhmabkz to play around
 with model. Add as figure later on compared to experimental data.}

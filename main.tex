@@ -10,6 +10,7 @@
 \usepackage{siunitx}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{tabularx}
+\usepackage[toc,page]{appendix}
 
 \setlength{\marginparwidth}{2cm}
 \graphicspath{ {images/} }
@@ -44,7 +45,7 @@
     {\includegraphics[width=\textwidth]{lonestar_cover.jpg}}
 }
 \author{Matthew Junkit Yu}
-\date{16 December 2022}
+\date{17 December 2022}
 \maketitle
 
 {
@@ -61,9 +62,11 @@
 \input{chapters/conclusion.tex}
 {
     \hypersetup{linkcolor=black}
-    \input{chapters/appendices/appendix_a.tex}
-    \input{chapters/appendices/appendix_b.tex}
     \printbibliography
+    \begin{appendices}
+        \input{chapters/appendices/appendix_a.tex}
+        \input{chapters/appendices/appendix_b.tex}
+    \end{appendices}
     \listoftodos[TODOS]
 }
 \end{document}
