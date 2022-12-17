@@ -2,19 +2,38 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{xcolor}
-% \pagecolor[rgb]{0,0,0} %black
-% \color[rgb]{1,1,1} %grey
 \usepackage{soul}
-% \usepackage[colorlinks]{hyperref}
+\usepackage[colorlinks]{hyperref}
 \usepackage{acronym}
 \usepackage[backend=biber]{biblatex}
 \usepackage{amsmath}
-
-\setlength {\marginparwidth}{2cm}
+\usepackage{siunitx}
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage{tabularx}
 
+\setlength{\marginparwidth}{2cm}
 \graphicspath{ {images/} }
 \addbibresource{./references.bib}
+
+% Equation formatting units
+% https://tex.stackexchange.com/a/166610
+\makeatletter
+%%% redefine \eqref to be like the original
+\renewcommand{\eqref}[1]{\textup{\eqreftagform@{\ref{#1}}}}
+\let\eqreftagform@\tagform@
+%%% redefine \tagform@
+\def\tagform@#1{%
+  \maketag@@@{%
+    \if@unit(\thiseq@unit)\quad\fi\global\@unitfalse
+    (\ignorespaces#1\unskip\@@italiccorr)%
+  }%
+}
+\newif\if@unit
+\def\equnit#1{%
+  \gdef\thiseq@unit{#1}%
+  \global\@unittrue
+}
+\makeatother
 
 
 \begin{document}
@@ -28,17 +47,23 @@
 \date{16 December 2022}
 \maketitle
 
-\tableofcontents
-\listoffigures
-\listoftables
+{
+    \hypersetup{linkcolor=black}
+    \tableofcontents
+    \listoffigures
+    \listoftables
+}
 
 \input{chapters/introduction}
-\input{chapters/chapter_1.tex}
-\input{chapters/chapter_2.tex}
-\input{chapters/chapter_3.tex}
+\input{chapters/chapter_1/chapter_1.tex}
+\input{chapters/chapter_2/chapter_2.tex}
+\input{chapters/chapter_3/chapter_3.tex}
 \input{chapters/conclusion.tex}
-\input{chapters/appendix_a.tex}
-\input{chapters/appendix_b.tex}
-\printbibliography
-\listoftodos[TODOS]
+{
+    \hypersetup{linkcolor=black}
+    \input{chapters/appendices/appendix_a.tex}
+    \input{chapters/appendices/appendix_b.tex}
+    \printbibliography
+    \listoftodos[TODOS]
+}
 \end{document}
