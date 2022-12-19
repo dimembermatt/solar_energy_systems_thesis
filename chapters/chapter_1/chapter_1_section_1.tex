@@ -53,12 +53,12 @@ parts.
 \begin{equation}
     I_{PV} = qA\int_{}{}b_s(E)QE(E)dE
     \equnit{\si{\ampere}}
-    \label{eq:cell_photocurrent}
+    \label{eq:cell_photocurrent_1}
 \end{equation}
 
 On a fundamental level, we can define the photocurrent \ac{IPV} as a function of
 the photons incident upon the surface of the solar cell and the solar cell's
-spectral response. This is demonstrated in Equation~\ref{eq:cell_photocurrent}.
+spectral response. This is demonstrated in Equation~\ref{eq:cell_photocurrent_1}.
 A bulleted explanation of this equation oriented for the layman is as follows:
 
 \begin{itemize}
@@ -92,23 +92,23 @@ short circuit current \ac{ISC}.
 \begin{equation}
     I_{PV} = I_{SC}
     \equnit{\si{\ampere}}
-    \label{eq:cell_photocurrent_simplified}
+    \label{eq:cell_photocurrent_2}
 \end{equation}
 
-We'll discuss in Section~\ref{sec:five_parameter_solar_cell_model} that Cubas et
-al.~\cite{cubas_et_al} defines the photocurrent as a ratio of the series and
-shunt resistance in addition to the short circuit current. However, in most
-cases, the empirical value of \ac{ISC} will not differ from
-Equation~\ref{eq:cell_photocurrent_simplified}.
+We'll discuss in Section~\ref{subsec:five_param_series_resistance} that Cubas et
+al.~\cite{cubas_et_al}\cite{cubas_et_al_2} defines the photocurrent as a ratio
+of the series and shunt resistance in addition to the short circuit current.
+However, in most cases, the empirical value of \ac{ISC} will not differ from
+Equation~\ref{eq:cell_photocurrent_2}.
 
 
 \subsection{Dark Current}\label{subsec:three_param_dark_current}
 
 The dark current \ac{ID} comprises of the interesting and critical parameters of
 the three parameter model; shown in
-Equation~\ref{eq:cell_dark_current_simplified}, it consists of the term \ac{I0}
+Equation~\ref{eq:cell_dark_current_1}, it consists of the term \ac{I0}
 and an exponential. The exponential is a function of three key variables: the
-\ac{TC}, \ac{V}, and ideality factor \ac{N}.
+\ac{TC}, \ac{VL}, and ideality factor \ac{N}.
 
 This ideality factor is typically between $1$ and $2$, and represents the
 proportional influence of carriers inseveral recombination processes for a given
@@ -127,7 +127,7 @@ $26$ $mV$. It is defined by Equation~\ref{eq:cell_thermal_voltage}.
 \begin{equation}
     I_D = I_0[\exp(\frac{V}{V_T}) - 1]
     \equnit{\si{\ampere}}
-    \label{eq:cell_dark_current_simplified}
+    \label{eq:cell_dark_current_1}
 \end{equation}
 
 \begin{equation}
@@ -346,7 +346,7 @@ dependence.
 \begin{equation}
     \begin{split}
         V_{OC}(G, T_C) &= V_{OC,ref}[1 - \beta (T_{C,ref} - T_C)] \\
-        & + \frac{nk_B(T_{C,ref} + T_C/\gamma)}{q}\ln(\frac{G}{G_{ref}})
+        & \quad+ \frac{nk_B(T_{C,ref} + T_C/\gamma)}{q}\ln(\frac{G}{G_{ref}})
     \end{split}
     \equnit{\si{\volt}}
     \label{eq:cell_open_circuit_voltage_3}
@@ -379,7 +379,7 @@ Section~\ref{sec:evaluation_of_solar_cell_models}.
 
 To conclude this section, we will review the components that make up the three
 parameter cell model, propose three items of further exploration, and propose a
-complete model function that incorporates in the topics discussed.
+complete model function that incorporates the topics discussed.
 
 Firstly, the three parameter cell model is composed of a constant current source
 and a power consuming diode, representing photogeneration and recombination
@@ -407,20 +407,21 @@ Equation~\ref{eq:cell_output_current_2}.
 \todo{Reformat this equation}
 \begin{equation}
     \begin{split}
-        I(V, G, T_C) &= I_{PV}(G, T_C) - I_D(V, G, T_C) \\
-        & = I_{SC}(G, T_C) - I_D(V, G, T_C) \\
-        & = I_{SC}(G, T_C) - I_0[\exp(\frac{V}{V_T(T_C)}) - 1] \\
-        & = I_{SC}(G, T_C) - I_{SC}(G, T_C)[\exp(\frac{V_{OC}(G, T_C)}{V_T(T_C)}) - 1]^{-1}[\exp(\frac{V}{V_T(T_C)}) - 1] \\
-        & = I_{SC}(G, T_C) - I_{SC}(G, T_C)\frac{\exp(\frac{V}{V_T(T_C)}) - 1}{\exp(\frac{V_{OC}(G, T_C)}{V_T(T_C)}) - 1} \\
-        & = I_{SC}(G, T_C) - I_{SC}(G, T_C)\frac{\exp(\frac{qV}{n k_B T_C}) - 1}{\exp(\frac{qV_{OC}(G, T_C)}{n k_B T_C}) - 1} \\
-        & = I_{SC}(G, T_C)[1 - \frac{\exp(\frac{qV}{n k_B T_C}) - 1}{\exp(\frac{qV_{OC}(G, T_C)}{n k_B T_C}) - 1}] \\
-        & = I_{SC,ref}\frac{G}{G_{ref}}[1 - \alpha[T_{C,ref} - T_C]][1 - \frac{\exp(\frac{qV}{n k_B T_C}) - 1}{\exp(\frac{qV_{OC}(G, T_C)}{n k_B T_C}) - 1}] \\
+        I_L(V_L, G, T_C) &= I_{PV}(G, T_C) - I_D(V_L, G, T_C) \\
+        & = I_{SC}(G, T_C) - I_D(V_L, G, T_C) \\
+        & = I_{SC}(G, T_C) - I_0[\exp(\frac{V_L}{V_T(T_C)}) - 1] \\
+        & = I_{SC}(G, T_C) - I_{SC}(G, T_C)[\exp(\frac{V_{OC}(G, T_C)}{V_T(T_C)}) - 1]^{-1}[\exp(\frac{V_L}{V_T(T_C)}) - 1] \\
+        & = I_{SC}(G, T_C) - I_{SC}(G, T_C)\frac{\exp(\frac{V_L}{V_T(T_C)}) - 1}{\exp(\frac{V_{OC}(G, T_C)}{V_T(T_C)}) - 1} \\
+        & = I_{SC}(G, T_C) - I_{SC}(G, T_C)\frac{\exp(\frac{qV_L}{n k_B T_C}) - 1}{\exp(\frac{qV_{OC}(G, T_C)}{n k_B T_C}) - 1} \\
+        & = I_{SC}(G, T_C)[1 - \frac{\exp(\frac{qV_L}{n k_B T_C}) - 1}{\exp(\frac{qV_{OC}(G, T_C)}{n k_B T_C}) - 1}] \\
+        & = I_{SC,ref}\frac{G}{G_{ref}}[1 - \alpha[T_{C,ref} - T_C]][1 - \frac{\exp(\frac{qV_L}{n k_B T_C}) - 1}{\exp(\frac{qV_{OC}(G, T_C)}{n k_B T_C}) - 1}] \\
         & = I_{SC,ref}\frac{G}{G_{ref}}[1 - \alpha[T_{C,ref} - T_C]] \\
-        & * [1 + \frac{1 - \exp(\frac{qV}{n k_B T_C})}{1 - \exp(\frac{q[V_{OC,ref}[1 - \beta[T_{C,ref} - T_C]] + \frac{nk_B(T_{C,ref} + T_C/\gamma)}{q}\ln(\frac{G}{G_{ref}})]}{n k_B T_C})}] \\
+        & \quad* [1 + \frac{1 - \exp(\frac{qV_L}{n k_B T_C})}{1 - \exp(\frac{q[V_{OC,ref}[1 - \beta[T_{C,ref} - T_C]] + \frac{nk_B(T_{C,ref} + T_C/\gamma)}{q}\ln(\frac{G}{G_{ref}})]}{n k_B T_C})}] \\
     \end{split}
     \equnit{\si{\ampere}}
     \label{eq:cell_output_current_2}
 \end{equation}
 
-\todo[inline]{See https://www.desmos.com/calculator/yp0rhmabkz to play around
-with model. Add as figure later on compared to experimental data.}
+\todo[inline]{See \url{https://www.desmos.com/calculator/yp0rhmabkz} to play
+around with the complete three parameter solar cell model. Add as a figure later
+on compared to experimental data.}
