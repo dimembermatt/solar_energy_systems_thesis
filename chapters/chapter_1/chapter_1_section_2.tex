@@ -297,7 +297,7 @@ resistance, where $\si{\kappa}$ is a new temperature coefficient and
 $\si{\iota}$ is a new irradiance coefficient.
 
 \begin{equation}
-    R_{SH} = R_{S,ref} \exp(\kappa [T_{C,ref} - T_C])[1 - \iota(G - G_{ref})]
+    R_{SH} = R_{SH,ref} \exp(\kappa [T_{C,ref} - T_C])[1 - \iota(G - G_{ref})]
     \equnit{\si{\ohm}}
     \label{eq:shunt_resistance}
 \end{equation}
@@ -367,7 +367,7 @@ further section to prove or disprove their veracity and usefulness to the
 overall model.
 
 Finally, we incorporate these changes into the complete function defined in the
-previous section. This is presented as Equation~\ref{eq:cell_output_current_8}
+previous section. This is presented as Equation~\ref{eq:cell_output_current_6}
 (\ac{ISC}, \ac{VOC}, \ac{RS}, \ac{RSH}, and \ac{VT} abstracted out for clarity
 and brevity).
 
@@ -377,10 +377,10 @@ and brevity).
         I_L(V_L, G, T_C) &= I_{PV}(G, T_C, R_S, R_{SH}) - I_D(V_L, G, T_C, R_S) - I_{SH}(R_S, R_{SH}) \\
         & = I_{SC}(G, T_C)\frac{R_S + R_{SH}}{R_{SH}} - I_0(G, T_C)[\exp(\frac{V_L + I_L R_S}{V_T(T_C)}) - 1] - \frac{V_L + I_L R_S}{R_{SH}} \\
         & = I_{SC}(G, T_C)\frac{R_S + R_{SH}}{R_{SH}} - I_{SC}(G, T_C)\frac{\exp(\frac{V_L + I_L R_S}{V_T(T_C)}) - 1}{\exp(\frac{V_{OC}(G, T_C)}{V_T(T_C)}) - 1} - \frac{V_L + I_L R_S}{R_{SH}} \\
-        & = I_{SC}(G, T_C)[\frac{R_S + R_{SH}}{R_{SH}} + \frac{1 - \exp(\frac{V_L + I_L R_S}{V_T(T_C)})}{1 - \exp(1 - \frac{V_{OC}(G, T_C)}{V_T(T_C)})}] - \frac{V_L + I_L R_S}{R_{SH}}
+        & = I_{SC}(G, T_C)[\frac{R_S + R_{SH}}{R_{SH}} + \frac{1 - \exp(\frac{V_L + I_L R_S}{V_T(T_C)})}{1 - \exp(\frac{V_{OC}(G, T_C)}{V_T(T_C)})}] - \frac{V_L + I_L R_S}{R_{SH}}
     \end{split}
     \equnit{\si{\ampere}}
-    \label{eq:cell_output_current_8}
+    \label{eq:cell_output_current_6}
 \end{equation}
 
 \todo[inline]{See \url{https://www.desmos.com/calculator/yp0rhmabkz} to play
