@@ -1,8 +1,36 @@
 \chapter{Modeling Photovoltaics}\label{chapter:modeling_pvs}
 
-% TODO: intro for Chapter 1
-\todo{Insert intro paragraph on the focus of this chapter, as well as the a
-short discussion of the following sections.}
+In this chapter, \textbf{Modeling Photovoltaics}, we systematically review the
+various types of abstractions in photovoltaics, starting from solar cells and
+ending with solar arrays.
+
+We start by observing how solar cell models themselves can have differing
+granularities in their composition and how they address an array of internal
+qualities and external environs that influence real world performance. We also
+propose modifications that may improve their accuracy and precision, and
+consider tradeoffs that may occur in nonnominal conditions. We then evaluate
+these models against a dataset of solar cells characterized for use on the
+\ac{LHRs} vehicle, and then use the `best' set of models to predict solar cell
+behavior in larger contexts.
+
+These larger contexts start with the formation of solar modules that can take
+multiple shapes and sizes. We attempt to use the base set of models to
+understand how different configurations of solar modules may be affected by
+photovoltaic mismatch, a phenomenon caused by nonuniform cells in series or in
+parallel, either through manufacturing defects or lighting and thermal
+gradients across the module. We also add a bypass diode component in
+antiparallel to the solar module models in order to evaluate their turn-on
+conditions and mismatch mitigation effects. From these solar module models, we
+formulate a metric to measure mismatch, and propose suggestions on module size
+and bypass diode selection that can minimize mismatch. These suggestions will
+become heuristics and algorithms for optimizing module design later on in
+\autoref{chapter:optimizing_pvs}.
+
+Finally, we take these solar module models and combine them together to form a
+cohesive solar array model. From this model, we observe how the individual
+module effects can generate a global \ac{I-V} curve with local and global
+maxima, and discuss how this curve impacts how the larger photovoltaic system
+interacts with solar arrays.
 
 \newpage
 \input{chapters/chapter_1/chapter_1_section_1.tex}
