@@ -1,0 +1,51 @@
+\chapter{Modeling Photovoltaics}\label{chapter:modeling_pvs}
+
+In this chapter, \textbf{Modeling Photovoltaics}, we systematically review the
+various types of abstractions in photovoltaics, starting from solar cells and
+ending with solar arrays.
+
+We start by observing how solar cell models can have differing granularities in
+their composition and in how they address an array of internal qualities and
+external environs that influence real world performance. Alongside defining
+these models, we also propose modifications that may improve their accuracy and
+precision, and consider tradeoffs that may occur in nonnominal conditions. After
+defining these models, we then present an in-depth methodology for evaluating
+them; we construct a dataset of solar cell \ac{I-V} curves characterized for use
+on the \ac{LHRs} solar vehicle, then define techniques for extracting model
+parameters for each cell. We proceed to use those model parameters to predict
+their behavior in different conditions, and evaluate how they perform in terms
+of model accuracy and precision.
+
+We select the `best' set of solar cell models and use them as
+building blocks to build larger models, namely those for solar modules. These
+solar modules can take multiple shapes and sizes, and may exhibit reverse bias
+behavior in the event of photovoltaic mismatch, a phenomenon caused by
+nonuniform cells in series or in parallel. We also extend the module model by
+adding a bypass diode in antiparallel, and discussing how solar cell reverse
+bias behavior may drive their turn on conditions and mismatch mitigation
+effects. From these solar module models, we formulate a metric to measure
+mismatch, and propose suggestions and observations on how module size and cell
+characteristics may influence the total efficiency of the module. Insights
+developed in this section will later on become heuristics and algorithms for
+optimizing module design in \autoref{chapter:optimizing_pvs}. We extend the test
+methodology used for evaluating solar cells to solar modules, and validate
+whether the module models pass muster.
+
+% , either through manufacturing defects
+% or lighting and thermal gradients across the module.
+
+Finally, we take these solar module models and combine them together to form a
+cohesive solar array model. From this model, we observe how the individual
+module effects can generate a global \ac{I-V} curve with local and global
+maxima, and discuss how this curve impacts the way the larger photovoltaic
+system interacts with solar arrays. We also perform array testing using the
+\ac{LHRs} solar array, and compare a simulated version of the array test with
+real world data to determine a final, holistic evaluation of the models used.
+
+\input{chapters/chapter_modeling_pvs/modeling_solar_cells/main.tex}
+\input{chapters/chapter_modeling_pvs/modeling_solar_modules/main.tex}
+\input{chapters/chapter_modeling_pvs/modeling_solar_arrays/main.tex}
+
+\dots
+%TODO: conclusion for Chapter 1
+\todo{Insert conclusion on chapter topics and results.}

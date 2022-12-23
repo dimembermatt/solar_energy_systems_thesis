@@ -1,6 +1,4 @@
-\section{Five Parameter Solar Cell Model}\label{sec:five_parameter_solar_cell_model}
-
-\subsection{Model Introduction}\label{subsec:five_param_model_introduction}
+\subsection{Five Parameter Solar Cell Model}\label{subsec:five_parameter_solar_cell_model}
 
 \begin{figure}[h]
     \includegraphics[width=\textwidth]{solar_cell_five_parameter_model.png}
@@ -11,17 +9,17 @@
 The most common model for solar cells is the five parameter solar cell model,
 shown in \autoref{fig:single_diode_model_with_resistances}. This is the complete
 form of the single diode model discussed in the previous section,
-\autoref{sec:three_parameter_solar_cell_model}. There are two added
+\autoref{subsec:three_parameter_solar_cell_model}. There are two added
 components/parameters: a \acf{RS} and \acf{RSH}, whose primary roles are to
 alter the shape of the knee-bend in the I-V curve. As such, this model improves
 upon the main flaw of the three parameter solar cell model, that of poorly
 predicting points clustering around the maximum power point.
 
-In the following subsections, we discuss the two added parameters and their
-specific effects on the model.
+In the following, we discuss the two added parameters and their specific effects
+on the model.
 
 
-\subsection{Shunt Resistance}\label{subsec:five_param_shunt_resistance}
+\subsubsection{Shunt Resistance}\label{subsubsec:five_param_shunt_resistance}
 
 \begin{figure}[h]
     \includegraphics[width=\textwidth]{series_shunt_resistance.png}
@@ -55,7 +53,7 @@ and the \acf{VL}, as shown in \autoref{eq:cell_output_current_4}.
 \end{equation}
 
 
-\subsection{Series Resistance}\label{subsec:five_param_series_resistance}
+\subsubsection{Series Resistance}\label{subsubsec:five_param_series_resistance}
 
 The \acf{RS} forces the knee-bend of the \ac{I-V} curve to the left or right, as
 opposed to up and down for \ac{RSH}. As \ac{RS} increases, more current is
@@ -68,9 +66,9 @@ The \ac{RS} term impacts the consumers of the five parameter solar cell model;
 namely the \ac{ID} and the \ac{RSH} terms. A visualization of this is shown as
 \autoref{fig:current_junction}.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{cell_kirchoff_current_junction.png}
+    \includegraphics[width=0.6\textwidth]{cell_kirchoff_current_junction.png}
     \caption{Current Flow Junction of Five Parameter Model Solar Cell}
     \label{fig:current_junction}
 \end{figure}
@@ -116,15 +114,15 @@ discussion on how these solvers were implemented for this model and variants of
 this model can be found in \autoref{appendix:iterative_solvers}.
 
 \todo[inline]{Augment appendix note with reference to
-\ref{subsec:modeling_solar_cell_datasets}. Relegate appendix note to discussion
-about iterative solvers and steps to build iterative solver (Desmos -> MATLAB ->
+\ref{subsubsec:modeling_solar_cell_datasets}. Relegate appendix note to discussion
+about iterative solvers and steps to build iterative solver (Desmos -\> MATLAB -\>
 Python).}
 
 
-\subsection{Photocurrent as a Ratio of Shunt/Series Resistance}\label{subsec:photocurrent_shunt_series_relation}
+\subsubsection{Photocurrent as a Ratio of Shunt/Series Resistance}\label{subsubsec:photocurrent_shunt_series_relation}
 
 An interesting addition to the five parameter cell model is presented by Cubas
-et al~\cite{cubas_et_al}\cite{cubas_et_al_2}: they observe that
+et al~\cite{cubas_et_al}~\cite{cubas_et_al_2}: they observe that
 \autoref{eq:cell_output_current_5} in short circuit conditions results in
 \autoref{eq:cell_short_circuit_current_6}.
 
@@ -163,7 +161,7 @@ of \ac{ISC} and a ratio of \ac{RS} and \ac{RSH}, shown in
         Charles, 1981   & GSC   & 0.5610 & 1.01E-5 & 1.80E-5 \\ \hline
         Lo Brano, 2010  & Q6LM  & 7.6650 & 1.42E-9 & 1.85E-10 \\ \hline
     \end{tabularx}
-    \caption{Dark Current Ratios for Various Reference Cells}
+    \caption{Dark Current Ratios for Various Reference Cells~\cite{cubas_et_al}}
     \label{table:dark_current_reference}
 \end{table}
 
@@ -192,14 +190,14 @@ intensity light, two conditions that tend to come hand in hand. These conditions
 tend to only be experienced by concentrator photovoltaics and are highly
 unlikely to be reached by normal solar cells.
 
-We will observe later in \autoref{sec:evaluation_of_solar_module_models} that
-with our dataset of Maxeon Gen III Bin Le1 solar cells, the vast majority of
-estimated series resistance is well below $0.08 \si{\ohm}$, which results in
-dark currents less than a m\si{\ampere}. This means that this modification
-(assuming it improves the accuracy of the model), is well suited for our solar
-cells.
+We will observe later in \autoref{subsec:eval_solar_cell_models} that with our
+dataset of Maxeon Gen III Bin Le1 solar cells, the vast majority of estimated
+series resistance is well below $0.08 \si{\ohm}$, which results in dark currents
+less than a m\si{\ampere}. This means that this modification (assuming it
+improves the accuracy of the model), is well suited for our solar cells.
 
-Incorporating this revision, we arrive at \autoref{eq:cell_short_circuit_current_7}.
+Incorporating this revision, we arrive at
+\autoref{eq:cell_short_circuit_current_7}.
 
 \begin{equation}
     I_L = I_{SC}\frac{R_S + R_{SH}}{R_{SH}} - I_0[\exp(\frac{V_L + I_L R_S}{V_T}) - 1] - \frac{V_L + I_L R_S}{R_{SH}}
@@ -212,9 +210,9 @@ around with the revised dark current model. Add as a figure later on compared to
 experimental data.}
 
 
-\subsection{Shunt and Series Resistance as a Function of Irradiance, Temperature}\label{subsec:rsh_rs_dependence}
+\subsubsection{Shunt and Series Resistance as a Function of Irradiance, Temperature}\label{subsubsec:rsh_rs_dependence}
 
-Throughout this major section, we introduced the notion of shunt and series
+Throughout this discussion, we introduced the notion of shunt and series
 resistance as internal parasitics. However, we did not explore whether these
 `internal parameters' are themselves affected by external conditions such as
 irradiance and temperature.
@@ -244,28 +242,28 @@ For \ac{RS}, they observed the following trends:
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.75\textwidth]{febba_shunt_resistance_and_temperature.jpg}
+    \includegraphics[width=\textwidth]{febba_shunt_resistance_and_temperature.jpg}
     \caption{Shunt Resistance vs Temperature~\cite{febba_et_al}}
     \label{fig:febba_shunt_resistance_and_temperature}
 \end{figure}
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.75\textwidth]{febba_shunt_resistance_and_irradiance.jpg}
+    \includegraphics[width=\textwidth]{febba_shunt_resistance_and_irradiance.jpg}
     \caption{Shunt Resistance vs Irradiance~\cite{febba_et_al}}
     \label{fig:febba_shunt_resistance_and_irradiance}
 \end{figure}
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.75\textwidth]{febba_series_resistance_and_temperature.jpg}
+    \includegraphics[width=\textwidth]{febba_series_resistance_and_temperature.jpg}
     \caption{Series Resistance vs Temperature~\cite{febba_et_al}}
     \label{fig:febba_series_resistance_and_temperature}
 \end{figure}
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.75\textwidth]{febba_series_resistance_and_irradiance.jpg}
+    \includegraphics[width=\textwidth]{febba_series_resistance_and_irradiance.jpg}
     \caption{Series Resistance vs Irradiance~\cite{febba_et_al}}
     \label{fig:febba_series_resistance_and_irradiance}
 \end{figure}
@@ -301,41 +299,67 @@ resistance, with \ac{KAPPA} and \ac{IOTA}.
     \label{eq:shunt_resistance}
 \end{equation}
 
-We also note that a solar cell consists of a network of resistors and diodes. If
-we dispel the assumptions that the solar cell is (a) entirely and evenly
-illuminated, (b) uniformly heated, and (c) of consistent manufacturing quality,
-the apparent series resistance measured at the terminals of the cell can
-fluctuate. An example of this is provided below in
-\autoref{fig:cell_with_varying_series_resistance}. Depending on the
-proportion of the solar cell with varying amounts of series resistance, the
-observed \ac{I-V} curve could differ greatly.
+\autoref{eq:series_resistance_2} and \autoref{eq:shunt_resistance}'s
+coefficients are not provided by the manufacturer, so they will have to be
+estimated. We'll look at ways to measure series and shunt resistance in
+\autoref{subsubsec:experimental_extraction_of_cell_parameters}, and how to take
+advantage of our test setup to measure the coefficients. Additionally, we'll
+attempt to replicate Fébba et al's work on a broader scale, with a temperature
+and irradiance range of ($0\si{\celsius}$ to $100\si{\celsius}$
+and $0\si{\watt/\meter^2}$ to $1000\si{\watt/\meter^2}$, respectively).
 
-\begin{figure}[h]
+
+\subsubsection{Non Uniform Series Resistance}\label{subsubsec:nonuniform_series_resistance}
+
+As an aside to this thesis, we note that the solar cell models described assume
+that the cell is uniform in composition and thus can represent the series
+resistance as a lumped resistance. In actuality, the cell is a two (actually
+three, but for all intents and purposes the thickness is irrelevant in terms of
+affecting the series resistance -although it may affect the shunt resistance)
+dimensional network of resistors and diodes
+(\autoref{fig:cell_with_varying_series_resistance}).
+
+\begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{cell_with_varying_series_resistance.png}
+    \includegraphics[width=0.6\textwidth]{cell_with_varying_series_resistance.png}
     \caption{Solar Cell With Varying Series Resistances~\cite{pveducation_measurement_of_series_resistance}}
     \label{fig:cell_with_varying_series_resistance}
 \end{figure}
 
-Replication of Fébba et al's work is presented in
-\autoref{appendix:parasitics_measurements}, where a custom testbed is used
-to measure solar cell curves at various temperature and irradiance levels at a
-broader range compared to Fébba et al ($0\si{\celsius}$ to $100\si{\celsius}$
-and $0\si{\watt/\meter^2}$ to $1000\si{\watt/\meter^2}$, respectively).
-Additionally, \autoref{appendix:parasitics_measurements} also discusses
-methods to evaluate the resistances and their respective coefficients. The
-evaluation of the effectiveness of these terms in predicting the expected
-\ac{I-V} curves warrants their own subsection in
-\autoref{sec:evaluation_of_solar_cell_models}.
+If the cell series resistance was measured using two probes at various points in
+the cell, we would likely see that the places of smallest resistance will focus
+on the direct paths between two terminals; the places of largest resistance will
+be at the edges of the cell where the current path is longest. This is
+visualized on a Maxeon Gen III cell in
+\autoref{fig:maxeon_gen_iii_cell_current_resistance_path}, where the darker
+paths represent higher resistances.
 
-\todo[inline]{Augment appendix note with reference to
-\ref{subsec:experimental_extraction_of_cell_parameters}. Relegate appendix note
-with in depth experimental measurements and statistics.}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.88\textwidth]{maxeon_gen_iii_cell_current_resistance_paths.png}
+    \caption{Current Paths of Maxeon Gen III Cell}
+    \label{fig:maxeon_gen_iii_cell_current_resistance_path}
+\end{figure}
+
+This series resistance non uniformity becomes more important to the
+resultant \ac{I-V} curve in low light conditions. Under uniform, bright
+conditions, current from the photovoltaic effect is generated evenly and
+conducts to the contacts regardless of the resistance along the paths. In the
+dark, any current that has to flow through the cell (either from a partially
+unshaded region or from an external source) will favor the shortest/least
+resistive paths. As such, we would expect the apparent series resistance to vary
+in various lighting contexts.
+
+For the purposes of this thesis, we will continue to assume that the solar cell,
+the base unit of our model, is uniform in internal and external characteristics.
+However, we will look at intercell variance in our module models. Further
+research into intracell series variance is explored by Bowden et
+Rohatgi~\cite{bowden_et_rohatgi}.
 
 
-\subsection{Model Summary}\label{subsec:five_param_model_summary}
+\subsubsection{Model Summary}\label{subsubsec:five_param_model_summary}
 
-To conclude this major section, we will review the components that make up the
+To conclude this discussion, we will review the components that make up the
 five parameter cell model, propose an item of further exploration, and propose a
 complete model function that incorporates the topics discussed.
 
@@ -362,14 +386,12 @@ exponential relationships with temperature and linear relationships with
 irradiance, although we require further data to validate the strength of these
 correlations. We derive initial models for these parameters, and discuss real
 world conditions in which they might deviate from our expectations (e.g. partial
-shading).
-
-As such, we will revisit both of these modifications to the base model in a
-further section to prove or disprove their veracity and usefulness to the
-overall model.
+shading). As such, we will revisit both of these modifications to the base model
+in a further discussion to prove or disprove their veracity and usefulness to
+the overall model.
 
 Finally, we incorporate these changes into the complete function defined in the
-previous section. This is presented as \autoref{eq:cell_output_current_6}
+previous sections. This is presented as \autoref{eq:cell_output_current_6}
 (\ac{ISC}, \ac{VOC}, \ac{RS}, \ac{RSH}, and \ac{VT} abstracted out for clarity
 and brevity). We observe that this complete model builds upon the existing
 parameters named in \autoref{subsec:three_param_model_summary} by adding two
@@ -389,14 +411,15 @@ and four more curve fitting parameters:
     \item \acf{IOTA}
 \end{itemize}
 
-For the cells tested in this project, the reference parameters \ac{RSREF} and
-\ac{RSHREF} were evaluated from the data empirically. Like \acf{N} and
-\acf{ZETA}, the curve fitting parameters must be derived from curve fitting
-technique or other statistical methods (such as building a distribution of cells
-at various irradiances to calculate a generic coefficient subject to the
-\ac{CLT}).
+Likewise with the \acf{N} and \acf{GAMMA} discussed in the three parameter solar
+cell model, we will look at estimating the four new curve fitting parameters
+using curve fitting and other statistical techniques. We can potentially
+establish known thermal coefficients (with some error) for these cells using the
+\ac{CLT}, and customize each cell with only the following variables: \ac{RSREF},
+\ac{RSHREF}, which can be determined empirically using a single measurement at
+\ac{STC}.
 
-\todo{Reformat this equation}
+
 \begin{equation}
     \begin{split}
         I_L(V_L, G, T_C) &= I_{PV}(G, T_C, R_S, R_{SH}) - I_D(V_L, G, T_C, R_S) - I_{SH}(R_S, R_{SH}) \\
@@ -409,5 +432,5 @@ at various irradiances to calculate a generic coefficient subject to the
 \end{equation}
 
 \todo[inline]{See \url{https://www.desmos.com/calculator/yp0rhmabkz} to play
-around with the complete three parameter solar cell model. Add as a figure later
+around with the complete five parameter solar cell model. Add as a figure later
 on compared to experimental data.}

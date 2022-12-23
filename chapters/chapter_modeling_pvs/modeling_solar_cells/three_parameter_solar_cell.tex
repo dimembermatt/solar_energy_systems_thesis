@@ -1,6 +1,4 @@
-\section{Three Parameter Solar Cell Model}\label{sec:three_parameter_solar_cell_model}
-
-\subsection{Model Introduction}\label{subsec:three_param_model_introduction}
+\subsection{Three Parameter Solar Cell Model}\label{subsec:three_parameter_solar_cell_model}
 
 \begin{figure}[h]
     \includegraphics[width=\textwidth]{solar_cell_three_parameter_model.png}
@@ -35,8 +33,8 @@ resistance is infinite (open circuit). Therefore, the five parameter model may
 also be called the complete single diode model.
 
 We observe from \autoref{fig:single_diode_model} that the \ac{IL} can be
-represented as a function of the photocurrent and the dark current, shown in
-\autoref{eq:cell_output_current_1}.
+represented as a function of the photocurrent and the dark current
+(\autoref{eq:cell_output_current_1}).
 
 \begin{equation}
     I_L = I_{PV} - I_D
@@ -44,11 +42,10 @@ represented as a function of the photocurrent and the dark current, shown in
     \label{eq:cell_output_current_1}
 \end{equation}
 
-In the following subsections, we break down each component into its constituent
-parts.
+In the following text, we break down each component into its constituent parts.
 
 
-\subsection{Photocurrent}\label{subsec:three_param_photocurrent}
+\subsubsection{Photocurrent}\label{subsubsec:three_param_photocurrent}
 
 \begin{equation}
     I_{PV} = qA\int_{}{}b_s(E)QE(E)dE
@@ -76,19 +73,20 @@ simplistic explanation of this equation is presented as follows:
 \end{itemize}
 
 \begin{figure}[h]
-    \includegraphics[width=\textwidth]{maxeon_gen_iii_cell_spectral_response.png}
+    \center
+    \includegraphics[width=0.95\textwidth]{maxeon_gen_iii_cell_spectral_response.png}
     \caption{Maxeon Gen III Cell Spectral Response}
     \label{fig:maxeon_gen_iii_cell_spectral_response}
 \end{figure}
 
 Solar cell manufacturers may provide a spectral response chart showing the
-quantum efficiency over the useful solar spectrum (as seen in
-\autoref{fig:maxeon_gen_iii_cell_spectral_response}), but will generally just
+quantum efficiency over the useful solar spectrum, as seen in
+\autoref{fig:maxeon_gen_iii_cell_spectral_response}, but will generally just
 provide the \ac{ISC} at \ac{STC} ($1000$ $Wm^{-2}$, $AM$ $1.5G$, $25$ $C$).
 
 As it turns out, the photocurrent can generally be approximated as the short
 circuit current. We'll discuss in \autoref{subsec:five_param_series_resistance}
-that Cubas et al.~\cite{cubas_et_al}\cite{cubas_et_al_2} defines the
+that Cubas et al.~\cite{cubas_et_al}~\cite{cubas_et_al_2} defines the
 photocurrent as a ratio of the series and shunt resistance in addition to the
 short circuit current. However, in most cases, the empirical value of \acl{ISC}
 will not differ from \autoref{eq:cell_photocurrent_2}.
@@ -100,7 +98,7 @@ will not differ from \autoref{eq:cell_photocurrent_2}.
 \end{equation}
 
 
-\subsection{Dark Current}\label{subsec:three_param_dark_current}
+\subsubsection{Dark Current}\label{subsubsec:three_param_dark_current}
 
 The \acf{ID} comprises of the interesting and critical parameters of the three
 parameter model; shown in \autoref{eq:cell_dark_current_1}, it consists of the
@@ -151,7 +149,7 @@ reader that the remaining terms in this equation are the \acf{KB} and \acf{Q}.
 \end{table}
 
 
-\subsection{Dark Saturation Current}\label{subsec:three_param_dark_sat_current}
+\subsubsection{Dark Saturation Current}\label{subsubsec:three_param_dark_sat_current}
 
 The \acf{I0} has two potential derivations. Generally, the three parameter
 model, (see Baig et al.~\cite{baig_et_al}, MacAlpine et
@@ -189,11 +187,11 @@ result in \autoref{eq:cell_dark_sat_current_2}.
 \end{equation}
 
 The latter model is convenient since it does not require measuring \ac{I0REF},
-\ac{EGREF}, nor \ac{EG}. As such, we will only evaluate the latter model in
-\autoref{sec:evaluation_of_solar_cell_models}.
+\ac{EGREF}, nor \ac{EG}. As such, we will focus on the latter model in
+\autoref{subsec:eval_solar_cell_models}.
 
 
-\subsection{Short Circuit Current}\label{subsec:three_param_short_circuit_current}
+\subsubsection{Short Circuit Current}\label{subsubsec:three_param_short_circuit_current}
 
 Finally, for the three parameter model, we derive the dependence of \acf{ISC}
 and \acf{VOC} on \acf{G} and \acf{TC} before establishing the final derivation
@@ -286,9 +284,8 @@ another constant, \ac{ISCREF} (\autoref{eq:cell_short_circuit_current_4}).
 \end{equation}
 
 These two competing models of the short circuit current will also be explored
-further in \autoref{sec:evaluation_of_solar_cell_models}. For the purposes of
-this subsection, however, we will combine
-\autoref{eq:cell_short_circuit_current_2} and
+further in \autoref{subsec:eval_solar_cell_models}. For now, we will
+combine \autoref{eq:cell_short_circuit_current_2} and
 \autoref{eq:cell_short_circuit_current_3} to give us
 \autoref{eq:cell_short_circuit_current_5}.
 
@@ -299,10 +296,10 @@ this subsection, however, we will combine
 \end{equation}
 
 
-\subsection{Open Circuit Voltage}\label{subsec:three_param_open_circuit_voltage}
+\subsubsection{Open Circuit Voltage}\label{subsubsec:three_param_open_circuit_voltage}
 
 Likewise, the \acf{VOC} is also a function of temperature and
-irradiance. It is known that \ac{VOC} has a medium positive
+irradiance. It is known that \ac{VOC} has a positive logarithmic
 correlation with irradiance and a medium negative correlation with temperature
 (\autoref{fig:cell_temperature_dependence} and
 \autoref{fig:cell_irradiance_dependence}).
@@ -331,11 +328,13 @@ logarithmic term to form \autoref{eq:cell_open_circuit_voltage_2}.
     \label{eq:cell_open_circuit_voltage_2}
 \end{equation}
 
-This term fits well with the paper’s experimental data, but is not immediately
-clear how it models the original term. It also does not properly model
-temperature change. \autoref{eq:cell_open_circuit_voltage_3} is a modified
-form that implements temperature dependence while retaining irradiance
-dependence.
+This term fits well with the paper's experimental data, but has issues
+representing the voltage across the cell at low light conditions. Because the
+cell voltage is zero in complete darkness (there is no current generated because
+there is not potential difference between the terminals), we propose
+\autoref{eq:cell_open_circuit_voltage_3}, which is a modified form of
+\autoref{eq:cell_open_circuit_voltage_2} that implements temperature dependence
+while retaining irradiance dependence.
 
 \begin{equation}
     \begin{split}
@@ -356,15 +355,15 @@ dependence.
 \autoref{eq:cell_open_circuit_voltage_3} implements two changes: a \acf{BETA}
 and a \acf{GAMMA}. \ac{BETA} is likewise (to \ac{ALPHA}) empirically determined;
 for silicon it known to be -0.3\%/K, or -0.003. \ac{GAMMA} is an experimentally
-determined curve fitting term, and may more appropriately model the exponential
-decrease of \ac{VOC} at low light conditions. It has an expected operable range
-of values between $[1, 100]$, where smaller values correlate to a wider range of
-of \ac{VOC} movement at low light conditions. This parameter, however, is not
-part of the three parameter cell model. Its efficacy will be explored further in
-\autoref{sec:evaluation_of_solar_cell_models}.
+determined curve fitting term, and affects how fast the logarithm converges to
+\ac{VOCREF}. It has an expected operable range of values between $[1, 100]$,
+where smaller values correlate to a wider range of of \ac{VOC} movement at low
+light conditions. This parameter, however, is not part of the three parameter
+cell model. Its efficacy will be explored further in
+\autoref{subsec:eval_solar_cell_models}.
 
 
-\subsection{Model Summary}\label{subsec:three_param_model_summary}
+\subsubsection{Model Summary}\label{subsubsec:three_param_model_summary}
 
 To conclude this section, we will review the components that make up the three
 parameter cell model, propose three items of further exploration, and propose a
@@ -412,14 +411,12 @@ and four curve fitting parameters:
 
 For the cells tested in this project, \ac{ALPHA} and \ac{BETA} were provided
 by the manufacturer, Maxeon, but \ac{N} and \ac{GAMMA} were not. Curve fitting
-techniques, like simulated annealing, will have to be applied to determine these
-two variables, and are explored in
-\autoref{sec:evaluation_of_solar_cell_models}.
+techniques such as simulated annealing are explored in
+\autoref{subsec:eval_solar_cell_models} to determine these two variables.
 
 
 % TODO: This is equation is a freak of nature... Probably stop at second to last
 % step and move most of the derivation to an appendix.
-\todo{Reformat this equation}
 \begin{equation}
     \begin{split}
         I_L(V_L, G, T_C) &= I_{PV}(G, T_C) - I_D(V_L, G, T_C) \\

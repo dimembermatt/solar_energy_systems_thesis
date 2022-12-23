@@ -1,29 +1,29 @@
-\section{Evaluation of Solar Cell Models}\label{sec:evaluation_of_solar_cell_models}
+\subsection{Evaluation of Solar Cell Models}\label{subsec:eval_solar_cell_models}
 
 To evaluate these solar cell models and their proposed modifications, we used a
-set of almost 450 Maxeon Gen III and Maxeon C60 solar cells. In this section, we
-will discuss the aspects of this collection, how we characterized the solar
+set of almost 450 Maxeon Gen III and Maxeon C60 solar cells. In the following,
+we will discuss the aspects of this collection, how we characterized the solar
 cells to generate a robust dataset with custom \acf{HW} and \acf{SW}, and
 techniques (both experimental and statistical) to evaluate and estimate their
 parameters. Finally, we'll use these parameters to compare the models and their
 real world equivalents to determine model accuracy and precision.
 
-
-\subsection{Solar Cell Dataset}\label{subsec:solar_cell_dataset}
+\subsubsection{Solar Cell Dataset}\label{subsubsec:solar_cell_dataset}
 
 The solar cells used for the \ac{LHRs} solar vehicle are a mixture of Maxeon Gen
 III and Maxeon C60 solar cells. These solar cells were selected primarily due to
 financial and availability constraints; historically, in the last two solar
 vehicle revisions (2018, 2021) Gen III Bin Le1 cells have been used, but this
 year the team decided to procure cheaper, more easily available C60 cells from
-secondary suppliers. Regardless, both of these cell lines remain state of the
-art despite their age \footnote{dates are unclear, but it appears that C60 was
-introduced around 2007\cite{sunpower_history} and the Gen III has been around as
-long as 2013\cite{smith_et_al}.}; both Aptera Motors\cite{aptera_solar_cells}
-and Lightyear One\cite{lightyear_one_solar_cells} -the latter of which is a
-former Solar Vehicles team- have announced cooperation with Maxeon to use their
-solar cells. Aptera in particular uses the Gen III
-cells\cite{aptera_solar_cells}.
+secondary suppliers. Regardless, these cell lines remain state of the art
+despite their age\footnote{dates are unclear, but it appears that C60 was
+introduced around 2007~\cite{sunpower_history} and the Gen III has been around
+as long as 2013\cite{smith_et_al}.}; both Aptera
+Motors~\cite{aptera_solar_cells} and Lightyear
+One~\cite{lightyear_one_solar_cells} -the latter of which is a former
+competitive solar vehicle team- have announced cooperation with Maxeon to use
+their solar cells. Aptera in particular uses the Gen III
+cells~\cite{aptera_solar_cells}.
 
 While these cell types are both $125 \si{\mm}$ by $125 \si{mm}$ (see
 \autoref{fig:maxeon_gen_iii_cell_footprint} for a visualization of the cell
@@ -50,14 +50,14 @@ the academic year the cells were originally unpacked and tested.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{maxeon_gen_iii_cell_characteristics.png}
+    \includegraphics[width=0.95\textwidth]{maxeon_gen_iii_cell_characteristics.png}
     \caption{Maxeon Gen III Cell Characteristics}
     \label{fig:maxeon_gen_iii_cell_characteristics}
 \end{figure}
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{maxeon_c60_cell_characteristics.png}
+    \includegraphics[width=0.95\textwidth]{maxeon_c60_cell_characteristics.png}
     \caption{Maxeon C60 Cell Characteristics}
     \label{fig:maxeon_c60_cell_characteristics}
 \end{figure}
@@ -81,7 +81,7 @@ the academic year the cells were originally unpacked and tested.
 \todo[inline]{Add number of cells tested to each group in table.}
 
 
-\subsection{Characterizing Solar Cells}\label{subsec:characterizing_solar_cells}
+\subsubsection{Characterizing Solar Cells}\label{subsubsec:characterizing_solar_cells}
 
 \todo[inline,caption={}]{
     \begin{itemize}
@@ -173,7 +173,7 @@ pyranometer using TSL2591 and TSL2591-like sensors}
 \todo[inline]{Add referenceto AMS TSL2591 datasheet. Figure 11.}
 
 
-\subsection{Experimental Extraction of Cell Parameters}\label{subsec:experimental_extraction_of_cell_parameters}
+\subsubsection{Experimental Extraction of Cell Parameters}\label{subsubsec:experimental_extraction_of_cell_parameters}
 
 \todo[inline,caption={}]{
     \begin{itemize}
@@ -188,7 +188,7 @@ pyranometer using TSL2591 and TSL2591-like sensors}
 }
 
 
-\subsection{Statistical Extraction of Cell Parameters}\label{subsec:statistical_extraction_of_cell_parameters}
+\subsubsection{Statistical Extraction of Cell Parameters}\label{subsubsec:statistical_extraction_of_cell_parameters}
 
 \todo[inline,caption={}]{
     \begin{itemize}
@@ -198,7 +198,7 @@ pyranometer using TSL2591 and TSL2591-like sensors}
 }
 
 
-\subsection{Modeling Solar Cell Datasets}\label{subsec:modeling_solar_cell_datasets}
+\subsubsection{Modeling Solar Cell Datasets}\label{subsubsec:modeling_solar_cell_datasets}
 
 \todo[inline,caption={}]{
     \begin{itemize}
@@ -209,4 +209,4 @@ pyranometer using TSL2591 and TSL2591-like sensors}
 }
 
 
-\subsection{Evaluating Solar Cell Models}\label{subsec:evaluating_solar_cell_models}
+\subsubsection{Evaluating Solar Cell Models}\label{subsubsec:evaluating_solar_cell_models}

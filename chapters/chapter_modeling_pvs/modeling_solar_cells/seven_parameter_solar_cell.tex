@@ -1,6 +1,4 @@
-\section{Seven Parameter Solar Cell Model}\label{sec:seven_parameter_solar_cell_model}
-
-\subsection{Model Introduction}\label{subsec:seven_param_model_introduction}
+\subsection{Seven Parameter Solar Cell Model}\label{subsec:seven_parameter_solar_cell_model}
 
 \begin{figure}[h]
     \includegraphics[width=\textwidth]{solar_cell_seven_parameter_model.png}
@@ -8,10 +6,12 @@
     \label{fig:double_diode_model}
 \end{figure}
 
-The seven parameter solar cell model, also known as a double diode model, shown
-in \autoref{fig:double_diode_model}, builds upon the five parameter model by
+The seven parameter solar cell model (\autoref{fig:double_diode_model}), also
+known as a double diode model, builds upon the five parameter model by
 introducing a second diode (hence the name) to more accurately model internal
-current losses, which can be split into the following:
+current losses.
+
+These losses can be split into the following:
 
 \begin{itemize}
     \item losses due to carrier recombination in the space charge region of the
@@ -78,7 +78,14 @@ each ideality constant for each diode is unique.
     \label{eq:cell_output_current_9}
 \end{equation}
 
-\subsection{Model Summary}\label{subsec:seven_param_model_summary}
+\todo[inline]{See \url{https://www.desmos.com/calculator/69rs9uo14f} to play
+around with the complete seven parameter solar cell model. Add as a figure later
+on compared to experimental data.}
+
+
+\subsubsection{Model Summary}\label{subsubsec:seven_param_model_summary}
 
 \todo[inline]{Might want to look for some more novel content, or wrap this section up as
 is. Nothing particularly new here besides another parameter to estimate.}
+
+
