@@ -1,1 +1,10 @@
-\chapter{I-V Curve Measurement Using Curve Tracer}\label{appendix:curve_tracer}
+\chapter{Calibrating the TSL2591 for an AM1.5 Spectra}\label{appendix:tsl2591_calibration}
+
+In order to calibrate the readings from the sensor as a proxy for
+the real irradiance experienced by the solar cell, we need to compare it to
+either a known source or a reference pyrometer. Another way to interpret the
+readings in counts is to convert it into lux; Michael et
+al.~\cite{michael_et_al} proposes several methodologies for determining and
+verifying a $\si{\lux}$ to $\si{\watt}/\si{\meter}^2$ conversion factor. They
+also propose an `engineering rule of thumb', that $120 \si{\lux} =
+\si{\watt}/\si{\meter}^2$.
