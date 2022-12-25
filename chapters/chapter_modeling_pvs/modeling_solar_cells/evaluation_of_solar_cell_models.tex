@@ -145,10 +145,11 @@ the normalized responsivity spectrum of the TSL2591
 (\autoref{fig:tsl2591_spectral_responsivity}) is also quite divergent from
 AM1.5G solar spectrum. It is, however, relatively close to the absorbance
 spectra observed by the Maxeon Gen III solar cells, so the irradiance measured
-by the device will slightly undershoot the expected value captured by thebcell.
-A further discussion on methods to calibrate the sensor readings for a true
-observed solar spectra is presented in \autoref{appendix:tsl2591_calibration}.
-These calibration methods are useful for testing photovoltaics outdoors.
+by the device will closely match (if not slightly undershoot) the expected value
+captured by the cell. A further discussion on methods to calibrate the sensor
+readings for a true observed solar spectra is presented in
+\autoref{appendix:tsl2591_calibration}. These calibration methods are useful for
+testing photovoltaics outdoors.
 
 To ensure the solar simulator irradiance is spatially uniform, the lighting
 modules relative to each other and relative to the plate need to be spaced
@@ -194,38 +195,166 @@ These elements of the test setup are depicted in \autoref{fig:test_setup}.
     \caption{Photovoltaic Testing Setup}
     \label{fig:test_setup}
 \end{figure}
+\newpage
 
 
 \subsubsection{Solar Cell Characterization}\label{subsubsec:solar_cell_characterization}
 
-\todo[inline]{Process of characterizing solar cell (assembly, test, disassembly)}
+The actual process of characterizing solar cells is now described as follows.
+
+\begin{enumerate}
+    \item The test article is labeled with a unique identifier (e.g. BV101)
+    (\autoref{fig:cell_label_placement}). This identifier is placed on the
+    positive terminal of the cell, preferably in a consistent orientation, to
+    facilitate quick identification and manipulation of the cell.
+
+    \begin{figure}[!htbp]
+        \includegraphics[width=\textwidth]{cell_label_placement.png}
+        \caption{Solar Cell Label Placement}
+        \label{fig:cell_label_placement}
+    \end{figure}
+
+    \item Leads are soldered on to the edge contacts of the test article, taking
+    care to make sure that there are no solder bumps left after soldering nor
+    excess solder bridging traces, causing a short
+    (\autoref{fig:cell_with_leads}).
+
+    \begin{figure}[!htbp]
+        \missingfigure[figwidth=\textwidth]{Solar Cell with Leads Soldered On}
+        \caption{Solar Cell with Leads Soldered On}
+        \label{fig:cell_with_leads}
+    \end{figure}
+
+    \item The test article is placed on top of the kapton tape layer in the test
+    setup, centering the article to the guide lines marked that correspond to
+    the positions of the abovehead grow lights (\autoref{fig:cell_placement}).
+
+    \begin{figure}[!htbp]
+        \missingfigure[figwidth=\textwidth]{Solar Cell Placement}
+        \caption{Solar Cell Placement}
+        \label{fig:cell_placement}
+    \end{figure}
+
+    \item The primary \ac{PCB} connects four wires to the cell leads; two thick
+    wires for current measurement and two thin wires for voltage measurement
+    (\autoref{fig:cell_lead_connections}).
+
+    \begin{figure}[!htbp]
+        \missingfigure[figwidth=\textwidth]{Solar Cell Lead Connections}
+        \caption{Solar Cell Lead Connections}
+        \label{fig:cell_lead_connections}
+    \end{figure}
+
+    \item The primary \ac{PCB} is connected via \ac{USB} to a computer with our
+    custom application installed (\autoref{fig:pcb_hookup}).
+
+    \begin{figure}[!htbp]
+        \missingfigure[figwidth=\textwidth]{\ac{PCB} Hookup}
+        \caption{\ac{PCB} Hookup}
+        \label{fig:pcb_hookup}
+    \end{figure}
+
+    \item We specify the conditions of the test (e.g. \ac{PV} identifier, type
+    of \ac{PV}, step size, sample averaging control, test duration, etc) and
+    initialize the \ac{PCB} (\autoref{fig:user_application_gui}).
+
+    \begin{figure}[!htbp]
+        \includegraphics[width=\textwidth]{user_application_gui.png}
+        \caption{User Application \ac{GUI}}
+        \label{fig:user_application_gui}
+    \end{figure}
+
+    \item We enable the lighting and thermal conditioning equipment, modifying
+    irradiance and temperature as expected (\autoref{fig:equipment_setup}).
+
+    \begin{figure}[!htbp]
+        \missingfigure[figwidth=\textwidth]{Equipment Setup}
+        \caption{Equipment Setup}
+        \label{fig:equipment_setup}
+    \end{figure}
+
+    \item We start the \ac{PCB}, which begins a scan of the \ac{PV} for the
+    specified duration. The application then proceeds to capture the data from
+    the \ac{PCB} and visualize it as well as extract important parameters from
+    cell (\autoref{fig:cell_results}).
+
+    \begin{figure}[!htbp]
+        \missingfigure[figwidth=\textwidth]{Cell Results}
+        \caption{Cell Results}
+        \label{fig:cell_results}
+    \end{figure}
+
+    \item Finally, the lighting and thermal conditioning equipment are turned
+    off, the cell is disconnected from the setup, and the leads are desoldered.
+\end{enumerate}
+
+An optional action is that we can hook up the secondary \ac{PCB} that measures
+the irradiance from the test setup prior to placing the solar cell
+(\autoref{fig:secondary_pcb_hookup}). This allows the primary \ac{PCB} to also
+return the expected cell irradiance to the user application, which will
+automatically adjust and predict the curve at \ac{STC}
+(\autoref{fig:cell_results_normalized}).
+
+\begin{figure}[!htbp]
+    \missingfigure[figwidth=\textwidth]{Secondary PCB Hookup}
+    \caption{Secondary PCB Hookup}
+    \label{fig:secondary_pcb_hookup}
+\end{figure}
+
+\begin{figure}[!htbp]
+    \missingfigure[figwidth=\textwidth]{Cell Results Normalized}
+    \caption{Cell Results Normalized}
+    \label{fig:cell_results_normalized}
+\end{figure}
 
 
 \subsubsection{Extraction of Cell Parameters}\label{subsubsec:extraction_of_cell_parameters}
 
 \todo[inline,caption={}]{
-    \begin{itemize}
-        \item Present results of each cell line
-        \item Compare against smith et al for Gen III how accurate and precise
-        the cell distribution is
-        \item Review parameters that need to be measured empirically (\ac{RS}, \ac{RSH}, etc)
-        \item Discussion on how to measure series and shunt resistance
-        empirically (refer to Appendix E)
-        \item Discussion on how to measure temperature coefficients empirically
-        \item Discussion on curve fitting techniques
-    \end{itemize}
+    \begin{enumerate}
+        \item Scatter plot of \ac{I-V}, \ac{P-V} curves
+        \item Review of parameters that need to be measured:
+        \begin{itemize}
+            \item \acf{G}
+            \item \acf{TC}
+            \item \acf{VOC}
+            \item \acf{ISC}
+            \item \acf{RS}
+            \item \acf{RSH}
+            \item \acf{ALPHA}
+            \item \acf{BETA}
+            \item \acf{ZETA}
+            \item \acf{ETA}
+            \item \acf{KAPPA}
+            \item \acf{IOTA}
+            \item \acf{N1}
+            \item \acf{N2}
+            \item \acf{GAMMA}
+        \end{itemize}
+        \item Empirical Measurement of \ac{G} to \ac{RSH}
+        \item Empirical Measurement of \ac{ALPHA} to \ac{IOTA}
+        \item Statistical Measurement of \ac{N1} to \ac{GAMMA}
+        \item Evaluation of parameter distributions
+        \item Comparison of distribution against smith et al~\cite{smith_et_al}
+    \end{enumerate}
 }
 
 
 \subsubsection{Modeling Solar Cell Datasets}\label{subsubsec:modeling_solar_cell_datasets}
 
 \todo[inline,caption={}]{
-    \begin{itemize}
-        \item Discuss python model for modeling cells, iterative solving (refer
-        to Appendix F)
-        \item Present initial figures showing expected model output
-    \end{itemize}
+    \begin{enumerate}
+        \item Evaluate initial Desmos models using datasheet parameters
+        \item Compare secondary Python models using extracted parameters against
+        cell \ac{I-V} curves.
+    \end{enumerate}
 }
 
 
-\subsubsection{Evaluating Solar Cell Models}\label{subsubsec:evaluating_solar_cell_models}
+\subsubsection{Evaluation of Solar Cell Models}\label{subsubsec:evaluation_of_solar_cell_models}
+
+\todo[inline]{
+    Holistic evaluation w/ table on statistics of model: e.g. for a
+    given model and extracted cell parameters, what is the overall
+    cell line accuracy and precision?
+}

@@ -1,8 +1,23 @@
 \chapter{Optimizing Photovoltaics}\label{chapter:optimizing_pvs}
 
-% TODO: intro for Chapter 2
-\todo{Insert intro paragraph on the focus of this chapter, as well as the a
-short discussion of the following sections.}
+In this chapter, \textbf{Optimizing Photovoltaics}, we use the models generated
+from the previous chapter to generate potential solar array designs for the
+solar vehicle. Along the way, we propose various statistical methods and
+algorithms such as hierarchy clustering and compatibility matching to pick cells
+for module assembly. This allows us to develop heuristics to minimize mismatch
+effects discussed in \autoref{sec:modeling_solar_modules}. We also run
+cost-benefit analyses of module sizes versus bypass diodes types to determine
+the ideal module size for specific areas of the solar vehicle, which may
+experience various amounts of shading over time. Finally, we propose two array
+designs: one with these optimizations and one without (based off of our
+historical processes), and attempt to estimate the cost and efficiency savings
+attributable to each optimization.
+
+\input{chapters/chapter_optimizing_pvs/solar_cell_matching.tex}
+\input{chapters/chapter_optimizing_pvs/solar_module_sizing.tex}
+\input{chapters/chapter_optimizing_pvs/solar_array_design.tex}
+
+\section{Conclusion}\label{sec:optimizing_pvs_conclusion}
 
 %TODO: conclusion for Chapter 2
-\todo{Insert conclusion on chapter topics and results.}
+\todo[inline]{Insert conclusion on chapter topics and results.}

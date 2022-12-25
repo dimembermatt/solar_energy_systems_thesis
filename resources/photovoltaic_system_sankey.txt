@@ -1,13 +1,11 @@
 // Enter Flows between Nodes, like this:
 //         Source [AMOUNT] Target
 
-Incident Solar Power [10] Reflection Losses
-Incident Solar Power [10] Thermal Losses
-Incident Solar Power [980] Captured Electrical Power
-
-Captured Electrical Power [30] Transmission Losses
-Captured Electrical Power [30] Mismatch Losses
-Captured Electrical Power [920] Transmitted Electrical Power
-
-// You can set a Node's color, like this:
-:Incident Solar Power  #708090
+Incident Irradiance [23.7] Cell Output
+Incident Irradiance [76.3] Cell Losses[1]
+Cell Output [1.185] Schottky Diode Loss
+Cell Output [2.37] Mismatch Loss
+Cell Output [20.145] Module Output
+Module Output [0.4029] Series Loss
+Module Output [0.60435] MPPT Loss
+Module Output [19.13775] Array Output

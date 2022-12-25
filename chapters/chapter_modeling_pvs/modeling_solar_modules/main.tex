@@ -1,5 +1,24 @@
 \section{Modeling Solar Modules}\label{sec:modeling_solar_modules}
 
-% Introduction to modeling solar modules
+After modeling the solar cell, the next layer up in the abstraction chain is
+modeling a solar module. A solar module, in a typical configuration, may consist
+of several solar cells in series, also called a `string'. For the \ac{LHRs}
+vehicle, we place many modules in series with each other before terminating at
+our variable load, a \acf{MPPT}. In our configuration, for each module, we place
+a `bypass diode' in antiparallel to each module. This is used to provide an
+alternative path of current to flow in the event that a solar module is
+insufficient for driving the current. This could happen if a single (or several)
+solar cell(s) in the module is (are) broken, or shaded, or some combination of
+the two.
 
-% Conclusion to modeling solar modules
+In this section, we'll focus on the conditions that cause issues with solar
+modules, in particular, cell mismatch. We'll look at how cells with differing
+operating conditions in series can drag down the efficiency of the module, and
+we'll incorporate the bypass diode into the model and investigate the
+conditions in which it activates and to what degree it activates.
+
+\input{chapters/chapter_modeling_pvs/modeling_solar_modules/solar_cell_strings.tex}
+\newpage
+\input{chapters/chapter_modeling_pvs/modeling_solar_modules/bypass_diodes.tex}
+\newpage
+\input{chapters/chapter_modeling_pvs/modeling_solar_modules/evaluation_of_solar_module_models.tex}
