@@ -1,0 +1,24 @@
+# Uncategorized Sources
+
+- Cell modeling
+  - [Parameters of photovoltaic cells in dependence on irradiance and temperature - Machacek et al](https://www.researchgate.net/publication/265882351_Parameters_of_photovoltaic_cells_in_dependence_on_irradiance_and_temperature)
+  - [Series resistance effects on solar cell measurements - Wolf et Rauschenbach](https://www.sciencedirect.com/science/article/pii/0365178963900638)
+  - [Novel seven-parameter model for photovoltaic modules - Elbaset et al](https://www.sciencedirect.com/science/article/pii/S0927024814003778#bib8)
+  - [Identification of Model Parameters of the Photovoltaic Solar Cells- Rusirawan et Farkas](https://www.sciencedirect.com/science/article/pii/S1876610214013733?ref=pdf_download&fr=RR-2&rr=77bb74d70f28e83b)
+  - [Effect of temperature on dark current characteristics of silicon solar cells and diodes - Radziemska](https://onlinelibrary.wiley.com/doi/pdf/10.1002/er.1113)
+  - [Solar cells parameters evaluation considering the series and shunt resistance - Bouzidi et al](https://www.sciencedirect.com/science/article/pii/S0927024807002048)
+  - [Temperature dependence of solar cell performance - an analysis - Singh et Ravindra](https://web.njit.edu/~sirenko/PapersNJIT/1-s2.0-S0927024812000931-main.pdf)
+- Mismatch modeling
+  - [Effect of non-uniform illumination and temperature distribution on concentrating solar cell - Li et al](https://www.sciencedirect.com/science/article/pii/S0360544217321059)
+  - [Analysis of Electrical Models for Photovoltaic Cells under Uniform and Partial Shading Conditions - Restrepo-Cuestas et al](https://www.mdpi.com/2079-3197/10/7/111)
+  - [A study on the mismatch effect due to the use of different photovoltaic modules classes in large-scale solar parks - Pavan et al](https://canalsolar.com.br/wp-content/uploads/2021/05/massipavan2012.pdf)
+  - [Correlation of current mismatch and fill factor in amorphous and nanocrystalline silicon based high efficiency multi-junction solar cells - Yan et al](https://ieeexplore.ieee.org/document/4922607)
+- Modeling solar array time constant, photovoltaic measurements
+  - [Time Constant of Solar Collectors - Fourier et Padet](https://www.researchgate.net/publication/256334612_Time_constant_of_solar_collectors)
+  - [Optimal I-V Curve Scan Time of Solar Cells and Modules in Light of Irradiance Level](https://www.hindawi.com/journals/ijp/2012/151452/)
+- Cell design, binning
+  - [Solar cell designs by maximizing energy production based on machine learning clustering of spectral variations - Ripalda et al](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6277435/)
+  - [Cell binning method analysis to minimize mismatch losses and performance variation in Si-based modules - Gabor](https://www.researchgate.net/profile/Andrew-Gabor/publication/4009469_Cell_binning_method_analysis_to_minimize_mismatch_losses_and_performance_variation_in_Si-based_modules/links/5649e83908ae44e7a28d723a/Cell-binning-method-analysis-to-minimize-mismatch-losses-and-performance-variation-in-Si-based-modules.pdf)
+- System power losses
+  - [Systematic photovoltaic system power losses calculation and modeling using computational intelligence techniques - Hashemi et al](https://www.sciencedirect.com/science/article/pii/S0306261920317670)
+  - [Energy losses in photovoltaic systems - Anis et Nour](https://www.sciencedirect.com/science/article/pii/019689049400085E)
