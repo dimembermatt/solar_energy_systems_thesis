@@ -2,83 +2,11 @@
 
 To evaluate these solar cell models and their proposed modifications, we used a
 set of almost 450 Maxeon Gen III and Maxeon C60 solar cells. In the following,
-we discuss the aspects of this collection, how we characterized the solar
-cells to generate a robust dataset with custom \acf{HW} and \acf{SW}, and
-techniques (both experimental and statistical) to evaluate and estimate their
-parameters. Finally, we'll use these parameters to compare the models and their
-real world equivalents to determine model accuracy and precision.
-
-\subsubsection{Solar Cell Dataset}\label{subsubsec:solar_cell_dataset}
-
-The solar cells used for the \ac{LHRs} solar vehicle are a mixture of Maxeon Gen
-III and Maxeon C60 solar cells. These solar cells were selected primarily due to
-financial and availability constraints; historically, in the last two solar
-vehicle revisions (2018, 2021) Gen III Bin Le1 cells have been used, but this
-year the team decided to procure cheaper, more easily available C60 cells from
-secondary suppliers. Regardless, these cell lines remain state of the art
-despite their age\footnote{the dates are unclear, but it appears that C60 was
-introduced around 2007~\cite{sunpower_history} and the Gen III has been around
-as long as 2013~\cite{smith_et_al}.}; both Aptera
-Motors~\cite{aptera_solar_cells} and Lightyear
-One~\cite{lightyear_one_solar_cells} -the latter of which is a former
-competitive solar vehicle team- have announced cooperation with Maxeon to use
-their solar cells. Aptera in particular uses the Gen III
-cells~\cite{aptera_solar_cells}.
-
-While these cell types are both $125 \si{\mm}$ by $125 \si{mm}$ (see
-\autoref{fig:maxeon_gen_iii_cell_footprint} for a visualization of the cell
-physical layout), the Gen III cells are slightly more efficient than the C60
-cells. Their (Gen III) rear contacts also tend to be slightly narrower than the
-C60 cells. Their electrical characteristics are outlined in
-\autoref{fig:maxeon_gen_iii_cell_characteristics} and
-\autoref{fig:maxeon_c60_cell_characteristics}. Note that the Maxeon Gen III
-cells are explicitly Bin Le1 cells, although the dataset will later show that
-the binning for both groups of cells tends to not be very respective of the
-actual measured \ac{I-V} curves, which is likely due to the variance in our
-testing setup.
-
-Since these cells were unpacked and designated for specific years,
-\autoref{table:solar_cell_dataset} is provided to delineate between the
-different types and `lines' of cells tested. `Lines' in this sense indicate
-the academic year the cells were originally unpacked and tested.
-
-\begin{figure}[!htbp]
-    \includegraphics[width=\textwidth]{maxeon_gen_iii_cell_footprint.png}
-    \caption{Maxeon Gen III Cell Footprint}
-    \label{fig:maxeon_gen_iii_cell_footprint}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=0.95\textwidth]{maxeon_gen_iii_cell_characteristics.png}
-    \caption{Maxeon Gen III Cell Characteristics}
-    \label{fig:maxeon_gen_iii_cell_characteristics}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=0.95\textwidth]{maxeon_c60_cell_characteristics.png}
-    \caption{Maxeon C60 Cell Characteristics}
-    \label{fig:maxeon_c60_cell_characteristics}
-\end{figure}
-
-\begin{table}[!htbp]
-    \begin{tabularx}{\textwidth}{
-        | >{\raggedright\arraybackslash}X
-        | >{\raggedright\arraybackslash}X
-        | >{\raggedright\arraybackslash}X
-        | >{\raggedright\arraybackslash}X | }
-        \hline
-        Cell Line   & Year Unpacked & Type      & Number of Cells \\ \hline \hline
-        RP          & 2022          & C60       & X               \\ \hline
-        MW          & 2020          & Gen III   & X               \\ \hline
-        2019\_Le1   & 2019          & Gen III   & X               \\ \hline
-        BU          & 2018          & Gen III   & X               \\ \hline
-    \end{tabularx}
-    \caption{Cell Lines Used in Solar Cell Dataset}
-    \label{table:solar_cell_dataset}
-\end{table}
-\todo[inline]{Add number of cells tested to each group in table.}
+we discuss how we characterized these solar cells using custom \acf{HW} and
+\acf{SW} to generate a robust dataset. We'll look at the dataset distributions
+and compare them against the manufacturer specifications, and finally, we'll use
+these extracted parameters to compare the models with the data to determine
+model accuracy and precision.
 
 
 \subsubsection{Solar Cell Test Setup}\label{subsubsec:solar_cell_test_setup}
@@ -191,7 +119,7 @@ These elements of the test setup are depicted in \autoref{fig:test_setup}.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[trim={2cm 10cm 0cm 3cm},clip,width=\textwidth]{test_setup.jpg}
+    \includegraphics[trim={2cm 10cm 0cm 3cm},clip,width=0.95\textwidth]{test_setup.jpg}
     \caption{Photovoltaic Testing Setup}
     \label{fig:test_setup}
 \end{figure}
@@ -340,6 +268,86 @@ automatically adjust and predict the curve at \ac{STC}
 }
 
 
+\subsubsection{Solar Cell Dataset}\label{subsubsec:solar_cell_dataset}
+
+The solar cells used for the \ac{LHRs} solar vehicle are a mixture of Maxeon Gen
+III and Maxeon C60 solar cells. These solar cells were selected primarily due to
+financial and availability constraints; historically, in the last two solar
+vehicle revisions (2018, 2021) Gen III Bin Le1 cells have been used, but this
+year the team decided to procure cheaper, more easily available C60 cells from
+secondary suppliers. Regardless, these cell lines remain state of the art
+despite their age\footnote{the dates are unclear, but it appears that C60 was
+introduced around 2007~\cite{sunpower_history} and the Gen III has been around
+as long as 2013~\cite{smith_et_al}.}; both Aptera
+Motors~\cite{aptera_solar_cells} and Lightyear
+One~\cite{lightyear_one_solar_cells} -the latter of which is a former
+competitive solar vehicle team- have announced cooperation with Maxeon to use
+their solar cells. Aptera in particular uses the Gen III
+cells~\cite{aptera_solar_cells}.
+
+While these cell types are both $125 \si{\mm}$ by $125 \si{mm}$ (see
+\autoref{fig:maxeon_gen_iii_cell_footprint} for a visualization of the cell
+physical layout), the Gen III cells are slightly more efficient than the C60
+cells. Their (Gen III) rear contacts also tend to be slightly narrower than the
+C60 cells. Their electrical characteristics are outlined in
+\autoref{fig:maxeon_gen_iii_cell_characteristics} and
+\autoref{fig:maxeon_c60_cell_characteristics}. Note that the Maxeon Gen III
+cells are explicitly Bin Le1 cells, although the dataset will later show that
+the binning for both groups of cells tends to not be very respective of the
+actual measured \ac{I-V} curves, which is likely due to the variance in our
+testing setup.
+
+Since these cells were unpacked and designated for specific years,
+\autoref{table:solar_cell_dataset} is provided to delineate between the
+different types and `lines' of cells tested. `Lines' in this sense indicate
+the academic year the cells were originally unpacked and tested.
+
+\begin{figure}[!htbp]
+    \includegraphics[width=\textwidth]{maxeon_gen_iii_cell_footprint.png}
+    \caption{Maxeon Gen III Cell Footprint}
+    \label{fig:maxeon_gen_iii_cell_footprint}
+\end{figure}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{maxeon_gen_iii_cell_characteristics.png}
+    \caption{Maxeon Gen III Cell Characteristics}
+    \label{fig:maxeon_gen_iii_cell_characteristics}
+\end{figure}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{maxeon_c60_cell_characteristics.png}
+    \caption{Maxeon C60 Cell Characteristics}
+    \label{fig:maxeon_c60_cell_characteristics}
+\end{figure}
+
+\begin{table}[!htbp]
+    \begin{tabularx}{\textwidth}{
+        | >{\raggedright\arraybackslash}X
+        | >{\raggedright\arraybackslash}X
+        | >{\raggedright\arraybackslash}X
+        | >{\raggedright\arraybackslash}X | }
+        \hline
+        Cell Line   & Year Unpacked & Type      & Number of Cells \\ \hline \hline
+        RP          & 2022          & C60       & X               \\ \hline
+        MW          & 2020          & Gen III   & X               \\ \hline
+        2019\_Le1   & 2019          & Gen III   & X               \\ \hline
+        BU          & 2018          & Gen III   & X               \\ \hline
+    \end{tabularx}
+    \caption{Cell Lines Used in Solar Cell Dataset}
+    \label{table:solar_cell_dataset}
+\end{table}
+\todo[inline]{Add number of cells tested to each group in table.}
+
+\todo[inline,caption={}]{
+    \begin{enumerate}
+        \item Evaluation of parameter distributions
+        \item Comparison of distributions against smith et al~\cite{smith_et_al}
+    \end{enumerate}
+}
+
+
 \subsubsection{Modeling Solar Cell Datasets}\label{subsubsec:modeling_solar_cell_datasets}
 
 \todo[inline,caption={}]{
@@ -351,7 +359,7 @@ automatically adjust and predict the curve at \ac{STC}
 }
 
 
-\subsubsection{Evaluation of Solar Cell Models}\label{subsubsec:evaluation_of_solar_cell_models}
+\subsubsection{Results}\label{subsubsec:solar_cell_model_results}
 
 \todo[inline]{
     Holistic evaluation w/ table on statistics of model: e.g. for a
