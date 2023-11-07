@@ -106,13 +106,22 @@ term \ac{I0} and an exponential. The exponential is a function of three key
 variables: the \acf{TC}, \acf{VL}, and \acf{N}.
 
 \begin{equation}
-    I_D = I_0[\exp(\frac{V}{V_T}) - 1]
+    I_D = I_0 \left[\exp\left(\frac{V_L}{V_T}\right) - 1\right]
     \equnit{\si{\ampere}}
     \label{eq:cell_dark_current_1}
 \end{equation}
 
+\noindent
+where
+
+\begin{equation}
+    V_T = \frac{n k_B T_C}{q}
+    \equnit{\si{\volt}}
+    \label{eq:cell_thermal_voltage}
+\end{equation}
+
 This ideality factor is typically between $1$ and $2$, and represents the
-proportional influence of carriers inbseveral recombination processes for a
+proportional influence of carriers in several recombination processes for a
 given cell composition and structure. Some ideality factor values are presented
 in \autoref{table:ideality_factors}, sourced from PVEducation's Ideality Factor
 page~\cite{pveducation_ideality_factor}. We note that the ideality factor may be
@@ -125,12 +134,6 @@ The term \ac{VT} (\autoref{eq:cell_thermal_voltage}) which encapsulates the cell
 temperature dependency describes the voltage across the P-N junction of the
 diode in the model: at \ac{STC} this is typically $26$ $mV$. We remind the
 reader that the remaining terms in this equation are the \acf{KB} and \acf{Q}.
-
-\begin{equation}
-    V_T = \frac{n k_B T_C}{q}
-    \equnit{\si{\volt}}
-    \label{eq:cell_thermal_voltage}
-\end{equation}
 
 \begin{table}[h!]
     \begin{tabularx}{\textwidth}{
@@ -172,13 +175,15 @@ result in \autoref{eq:cell_dark_sat_current_2}.
 
 \begin{equation}
     \begin{split}
-        I_L &= 0 \\
-        & = I_{SC} - I_D \\
+        I_L = 0 &= I_{SC} - I_D \\
         & = I_{SC} - I_0[\exp(\frac{V_{OC}}{V_T}) - 1]
     \end{split}
     \equnit{\si{\ampere}}
     \label{eq:cell_dark_sat_current_deriv}
 \end{equation}
+
+\noindent
+which gives
 
 \begin{equation}
     I_0 = I_{SC}[\exp(\frac{V_{OC}}{V_T}) - 1]^{-1}
@@ -243,22 +248,16 @@ et al.~\cite{baig_et_al}.
 \end{equation}
 
 Hishikawa et al.~\cite{hishikawa_et_al} proposes modeling the dependence of
-temperature on \ac{ISC} using a \acf{ALPHA}
-(\autoref{eq:thermal_coefficient_alpha}). \ac{ALPHA} is empirically determined
-and varies given the material composition and structure of the solar cell; for
-crystalline silicon solar cells, this is approximately 0.05\%/K, or 0.0005.
-\autoref{eq:thermal_coefficient_alpha} can be rearranged to form
-\autoref{eq:cell_short_circuit_current_3}. This is effectively equivalent to
-Rusirawan et Farkas~\cite{rusirawan_et_farkas}, but is slightly different from
-MacAlpine et Brandemuehl~\cite{macalpine_et_brandemuehl} and Baig et
-al.~\cite{baig_et_al}, who take the constant term $1$ and replace it with a
-another constant, \ac{ISCREF} (\autoref{eq:cell_short_circuit_current_4}).
+temperature on \ac{ISC} using a \acf{ALPHA}.
 
 \begin{equation}
     \alpha = \frac{1}{I_{SC,ref}}\frac{\Delta I_{SC}}{\Delta T_C} = \frac{1}{I_{SC,ref}}\frac{I_{SC,ref} - I_{SC}}{T_{C,ref} - T_C}
     \equnit{\si{unitless}}
     \label{eq:thermal_coefficient_alpha}
 \end{equation}
+
+\noindent
+where there are two competing equations for \ac{ISC}:
 
 \begin{equation}
     I_{SC}(T_C) = I_{SC,ref}[1 - \alpha(T_{C,ref} - T_C)]
@@ -283,11 +282,20 @@ another constant, \ac{ISCREF} (\autoref{eq:cell_short_circuit_current_4}).
     \label{eq:cell_short_circuit_current_4}
 \end{equation}
 
+\ac{ALPHA} is empirically determined
+and varies given the material composition and structure of the solar cell; for
+crystalline silicon solar cells, this is approximately 0.05\%/K, or 0.0005.
+\autoref{eq:thermal_coefficient_alpha} can be rearranged to form
+\autoref{eq:cell_short_circuit_current_3}. This is effectively equivalent to
+Rusirawan et Farkas~\cite{rusirawan_et_farkas}, but is slightly different from
+MacAlpine et Brandemuehl~\cite{macalpine_et_brandemuehl} and Baig et
+al.~\cite{baig_et_al}, who take the constant term $1$ and replace it with a
+another constant, \ac{ISCREF} (\autoref{eq:cell_short_circuit_current_4}).
+
 These two competing models of the short circuit current will also be explored
 further in \autoref{subsec:eval_solar_cell_models}. For now, we will
 combine \autoref{eq:cell_short_circuit_current_2} and
-\autoref{eq:cell_short_circuit_current_3} to give us
-\autoref{eq:cell_short_circuit_current_5}.
+\autoref{eq:cell_short_circuit_current_3} to give us:
 
 \begin{equation}
     I_{SC}(G, T_C) = I_{SC,ref}\frac{G}{G_{ref}}[1 - \alpha(T_{C,ref} - T_C)]
@@ -306,7 +314,7 @@ correlation with irradiance and a medium negative correlation with temperature
 
 Returning to \autoref{eq:cell_dark_sat_current_2}, in which we defined the
 \acf{I0} as a function of \ac{VOC}, we can invert the equation to retrieve the
-\ac{VOC} parameter, shown in \autoref{eq:cell_open_circuit_voltage_1}.
+\ac{VOC} parameter:
 
 \begin{equation}
     V_{OC} = V_T\ln(\frac{I_{SC}}{I_0} + 1)
